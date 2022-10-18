@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <math.h>
+typedef struct Circle {
+    double radius, x,y;
+}circle;
+typedef struct Point {
+    double x,y;
+}point;
+int Circle1(circle c, point p) {
+    //원 구조체 선언
+    //3가지 경우
+    double xy = sqrt(pow(c.x - p.x,2.0) + pow(c.y - p.y,2.0));
+    //1.원 안
+    if (c.radius > xy)//두 점 사이의 거리>지름 인 경우
+        printf("원 안\n");
+    //2.원 위
+    else if (c.radius == xy)  //두 점 사이의 거리=지름 인 경우
+        printf("원 위\n");
+    //3.원 밖
+    else                       //두 점 사이의 거리<지름 인 경우
+        printf("원 밖\n");
+}
+int main()
+{
+    circle c1; circle c2;
+    point p1;
+    c1.x = 3.0;c1.y = 3.0;
+    c1.radius = 3.0;
+    p1.x = 3.0;p1.y = 6.0;
+    Circle1(c1, p1);
+    return 0;
+}
